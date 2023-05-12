@@ -13,22 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://comeliness.github.io/2023/05/10/计组第五章中央处理器/"/>
+    <link rel="canonical" href="http://comeliness.github.io/2023/05/12/算法设计与分析的实验总结/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="CPU的功能和组成CPU的主要功能：指令控制（顺序寻址、跳跃寻址），操作控制（对指令操作码译码后产生控制信号），时间控制（维持各类操作的时序关系），数据加工（由ALU完成具体的操作） CPU的组成：运算器，控制器，片内Cache 运算器的主要功能：执行所有的算术运算和逻辑运算，并进行逻辑测试 控制器的主要功能：1.从内存中取出一条指令，指出下条指令的存放位置 2.对指令进行译码，产生相应的操作控制">
+        <meta name="description" content="最小延迟调度问题【问题描述】给定等待服务的客户集合A&#x3D;{1,2，… , n}, 预计对客户i的服务时间是ti, 该客户希望的完成时间是di, 即T&#x3D;&lt;t1,t2，…,tn&gt;, D&#x3D;&lt;d1, d2,… ,dn&gt;.  如果对客户i的服务在di之前结束, 那么对客户i的服务没有延迟;如果在di之后结束, 那么这个服务就被延迟了, 延迟的时间等于该服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计组第五章中央处理器">
-<meta property="og:url" content="http://comeliness.github.io/2023/05/10/%E8%AE%A1%E7%BB%84%E7%AC%AC%E4%BA%94%E7%AB%A0%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/index.html">
+<meta property="og:title" content="算法设计与分析的实验总结">
+<meta property="og:url" content="http://comeliness.github.io/2023/05/12/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%AE%9E%E9%AA%8C%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="三生三世">
-<meta property="og:description" content="CPU的功能和组成CPU的主要功能：指令控制（顺序寻址、跳跃寻址），操作控制（对指令操作码译码后产生控制信号），时间控制（维持各类操作的时序关系），数据加工（由ALU完成具体的操作） CPU的组成：运算器，控制器，片内Cache 运算器的主要功能：执行所有的算术运算和逻辑运算，并进行逻辑测试 控制器的主要功能：1.从内存中取出一条指令，指出下条指令的存放位置 2.对指令进行译码，产生相应的操作控制">
+<meta property="og:description" content="最小延迟调度问题【问题描述】给定等待服务的客户集合A&#x3D;{1,2，… , n}, 预计对客户i的服务时间是ti, 该客户希望的完成时间是di, 即T&#x3D;&lt;t1,t2，…,tn&gt;, D&#x3D;&lt;d1, d2,… ,dn&gt;.  如果对客户i的服务在di之前结束, 那么对客户i的服务没有延迟;如果在di之后结束, 那么这个服务就被延迟了, 延迟的时间等于该服务">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-10T11:50:23.000Z">
-<meta property="article:modified_time" content="2023-05-12T02:47:16.946Z">
+<meta property="article:published_time" content="2023-05-12T02:21:40.000Z">
+<meta property="article:modified_time" content="2023-05-12T02:46:33.408Z">
 <meta property="article:author" content="yz">
-<meta property="article:tag" content="计算机组成原理">
+<meta property="article:tag" content="算法设计与分析">
 <meta name="twitter:card" content="summary">
     
     
@@ -41,7 +41,7 @@
     
     <title>
         
-            计组第五章中央处理器 -
+            算法设计与分析的实验总结 -
         
         Learning record
     </title>
@@ -331,7 +331,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">计组第五章中央处理器</h1>
+                    <h1 class="article-title-regular">算法设计与分析的实验总结</h1>
                 </div>
             
                 
@@ -353,15 +353,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-05-10 19:50:23</span>
-        <span class="mobile">2023-05-10 19:50</span>
+        <span class="desktop">2023-05-12 10:21:40</span>
+        <span class="mobile">2023-05-12 10:21</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-05-12 10:47:16</span>
-            <span class="mobile">2023-05-12 10:47</span>
+            <span class="desktop">2023-05-12 10:46:33</span>
+            <span class="mobile">2023-05-12 10:46</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -373,7 +373,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>&nbsp;
+                        <a href="/tags/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">算法设计与分析</a>&nbsp;
                     </li>
                 
             </ul>
@@ -396,49 +396,42 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="CPU的功能和组成"><a href="#CPU的功能和组成" class="headerlink" title="CPU的功能和组成"></a>CPU的功能和组成</h2><p>CPU的主要功能：指令控制（顺序寻址、跳跃寻址），操作控制（对指令操作码译码后产生控制信号），时间控制（维持各类操作的时序关系），数据加工（由ALU完成具体的操作）</p>
-<p>CPU的组成：运算器，控制器，片内Cache</p>
-<p>运算器的主要功能：执行所有的算术运算和逻辑运算，并进行逻辑测试</p>
-<p>控制器的主要功能：1.从内存中取出一条指令，指出下条指令的存放位置</p>
-<p>2.对指令进行译码，产生相应的操作控制信号</p>
-<p>3.控制CPU、内存和输入&#x2F;输出设备之间数据流动</p>
-<p>CPU中主要寄存器：</p>
-<p>1.数据缓冲寄存器（DR）</p>
-<p>2.通用寄存器</p>
-<p>3.状态条件寄存器（PSW）</p>
-<p>4.程序计数器（PC）</p>
-<p>5.指令寄存器（IR）</p>
-<p>6.地址寄存器（AR）</p>
-<h2 id="指令周期"><a href="#指令周期" class="headerlink" title="指令周期"></a>指令周期</h2><p>指令周期：CPU从内存中取出一条指令并执行完毕的时间总和</p>
-<p>CPU周期：机器周期，一般从内存中读取一条指令字的最短时间（可完成CPU的一个基本操作）</p>
-<p>时钟周期：是计算机工作的基本时间单位</p>
-<p>存取周期：对内存进行一次读&#x2F;写操作从得到地址到完成读&#x2F;写操作以及下一次读&#x2F;写操作开始前的总时间</p>
-<p>总线周期：也就是一个访存储器或I&#x2F;O端口操作所用的时间。</p>
-<p>指令周期由若干个CPU周期组成，总线周期一般由4个时钟周期组成。</p>
-<p>指令周期&gt;存取周期&gt;&#x3D;CPU周期&gt;总线周期&gt;时钟周期</p>
-<p>！！！敲重点 间址周期和执行周期统称为执行周期</p>
-<p>所有指令的第一个机器周期必为取指周期</p>
-<p>所有指令的取指周期干的事大致相同：1.PC——&gt;ABUS（地址总线）——&gt;指令Cache，译码并启动</p>
-<p>2.指令Cache到IR（IR是指令寄存器：保存当前正在执行的一条指令）</p>
-<p>3.PC+1到PC，为取下条指令做好准备</p>
-<p>4.IR中的操作码被译码或测试，CPU识别</p>
-<h2 id="时序产生器和控制方式"><a href="#时序产生器和控制方式" class="headerlink" title="时序产生器和控制方式"></a>时序产生器和控制方式</h2><h2 id="微程序控制器"><a href="#微程序控制器" class="headerlink" title="微程序控制器"></a>微程序控制器</h2><h2 id="硬连线控制器"><a href="#硬连线控制器" class="headerlink" title="硬连线控制器"></a>硬连线控制器</h2><h2 id="流水CPU"><a href="#流水CPU" class="headerlink" title="流水CPU"></a>流水CPU</h2>
+                <h1 id="最小延迟调度问题"><a href="#最小延迟调度问题" class="headerlink" title="最小延迟调度问题"></a>最小延迟调度问题</h1><p>【问题描述】给定等待服务的客户集合A&#x3D;{1,2，… , n}, 预计对客户i的服务时间是ti, 该客户希望的完成时间是di, 即T&#x3D;&lt;t1,t2，…,tn&gt;, D&#x3D;&lt;d1, d2,… ,dn&gt;.  如果对客户i的服务在di之前结束, 那么对客户i的服务没有延迟;如果在di之后结束, 那么这个服务就被延迟了, 延迟的时间等于该服务结束时间减去di . 假设ti, di都是正整数, 一个调度函数f : A&amp;rarr;N，f(i)为对客户i的服务开始的时间, 要求所有区间(f(i), f(i)+ti)互不重叠. 一个调度f 的最大延迟是所有客户延迟时间的最大值. 求最大延迟达到最小的调度f .</p>
+<p>【输入形式】客户人数n，各客户服务时间及期望完成时间</p>
+<p>【输出形式】最小延迟时间调度安排及延迟时间</p>
+<p>【样例输入】</p>
+<p>5</p>
+<p>5 8 4 10 3</p>
+<p>10 12 15 11 20</p>
+<p>【样例输出】</p>
+<p>1 4 2 3 5</p>
+<p>12</p>
+<p>贪心算法；将客户希望结束的时间作为分配依据，按升序排列，然后依次安排客户，再同步进行更新最大延迟时间</p>
+<p>为什么这个算法正确呢？理解：因为如果希望结束时间早的迟迟没被安排，那么必将导致最大延迟时间增加，所以必须按顺序安排。</p>
+<p>结构体数组的变量排序：使用</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sort(变量名，变量名+长度，比较函数)默认从数组下标0开始比较</span></span><br><span class="line"><span class="built_in">sort</span>(a,a+n,cmp);</span><br><span class="line"></span><br><span class="line"><span class="comment">//sort(a+2,a+5,cmp)的含义是元素下标为2到元素下标为5-1=4之间的元素进行排序</span></span><br><span class="line"><span class="comment">//例如 要将元素下标为1到元素下标为2的元素进行排序 代码为：</span></span><br><span class="line"><span class="built_in">sort</span>(a+<span class="number">1</span>,a+<span class="number">3</span>,cmp);</span><br><span class="line"></span><br><span class="line"><span class="comment">//比较函数  传参为(结构体名字 变量1，结构体名字 变量2)</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(client a,client b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.d&lt;b.d)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//这是升序排列</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* run this program using the console pauser or add your own getch, system(&quot;pause&quot;) or input loop */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//首先构建一个结构体 客户 包括序号 持续时间 以及希望延迟时间  实际开始时间</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">client</span>&#123;</span><br><span class="line">	<span class="type">int</span> order;</span><br><span class="line">	<span class="type">int</span> t;</span><br><span class="line">	<span class="type">int</span> d;</span><br><span class="line">	<span class="type">int</span> begin;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(client a,client b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a.d&lt;b.d)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	client a[n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i].order = i+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;a[i].t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;a[i].d;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//按照希望到达时间进行排序</span></span><br><span class="line">	<span class="built_in">sort</span>(a,a+n,cmp); </span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;a[i].order&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;endl;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//然后开始按照排好的顺序，开始计算开始时间 以及延迟时间，</span></span><br><span class="line">	<span class="type">int</span> Delaymax=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">0</span>].begin = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> Delay;</span><br><span class="line">		Delay=a[i].begin+a[i].t-a[i].d;</span><br><span class="line">		<span class="keyword">if</span>(Delay&gt;Delaymax)</span><br><span class="line">		&#123;</span><br><span class="line">			Delaymax = Delay;<span class="comment">//实时更新最大延迟时间</span></span><br><span class="line">		&#125;</span><br><span class="line">		a[i+<span class="number">1</span>].begin=a[i].begin+a[i].t;</span><br><span class="line">	 &#125; </span><br><span class="line">	cout&lt;&lt;Delaymax;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
             </div>
 
             
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 计组第五章中央处理器</li>
+        <li><strong>标题:</strong> 算法设计与分析的实验总结</li>
         <li><strong>作者:</strong> 美羊羊桑</li>
-        <li><strong>创建于:</strong> 2023-05-10 19:50:23</li>
+        <li><strong>创建于:</strong> 2023-05-12 10:21:40</li>
         
             <li>
-                <strong>更新于:</strong> 2023-05-12 10:47:16
+                <strong>更新于:</strong> 2023-05-12 10:46:33
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2023/05/10/计组第五章中央处理器/
+            <strong>链接:</strong> https://redefine.ohevan.com/2023/05/12/算法设计与分析的实验总结/
         </li>
         <li>
             <strong>版权声明:</strong> 本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
@@ -453,7 +446,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">#计算机组成原理</a>&nbsp;
+                            <a href="/tags/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">#算法设计与分析</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -464,29 +457,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2023/05/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">机器学习第六章支持向量机</span>
-                                    <span class="post-nav-item">上一篇</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/05/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E7%AB%A0/"
+                            href="/2023/05/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">机器学习第二章</span>
+                                    <span class="post-nav-title-item">机器学习第六章支持向量机</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -551,8 +529,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">计组第五章中央处理器</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU%E7%9A%84%E5%8A%9F%E8%83%BD%E5%92%8C%E7%BB%84%E6%88%90"><span class="nav-text">CPU的功能和组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="nav-text">指令周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E4%BA%A7%E7%94%9F%E5%99%A8%E5%92%8C%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-text">时序产生器和控制方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-text">微程序控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E8%BF%9E%E7%BA%BF%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-text">硬连线控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4CPU"><span class="nav-text">流水CPU</span></a></li></ol>
+        <div class="page-title">算法设计与分析的实验总结</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-text">最小延迟调度问题</span></a></li></ol>
 
     </div>
 </div>
