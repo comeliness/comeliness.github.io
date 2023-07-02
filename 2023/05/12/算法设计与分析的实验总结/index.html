@@ -25,11 +25,13 @@
 <meta property="og:site_name" content="三生三世">
 <meta property="og:description" content="最小延迟调度问题【问题描述】给定等待服务的客户集合A&#x3D;{1,2，… , n}, 预计对客户i的服务时间是ti, 该客户希望的完成时间是di, 即T&#x3D;&lt;t1,t2，…,tn&gt;, D&#x3D;&lt;d1, d2,… ,dn&gt;.  如果对客户i的服务在di之前结束, 那么对客户i的服务没有延迟;如果在di之后结束, 那么这个服务就被延迟了, 延迟的时间等于该服务">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://comeliness.github.io/imgs/image-20230523202531818.png">
 <meta property="article:published_time" content="2023-05-12T02:21:40.000Z">
-<meta property="article:modified_time" content="2023-05-12T02:46:33.408Z">
+<meta property="article:modified_time" content="2023-05-27T01:47:47.612Z">
 <meta property="article:author" content="yz">
 <meta property="article:tag" content="算法设计与分析">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://comeliness.github.io/imgs/image-20230523202531818.png">
     
     
     <!--- Icon Part-->
@@ -360,8 +362,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-05-12 10:46:33</span>
-            <span class="mobile">2023-05-12 10:46</span>
+            <span class="desktop">2023-05-27 09:47:47</span>
+            <span class="mobile">2023-05-27 09:47</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -415,6 +417,91 @@
 
 <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* run this program using the console pauser or add your own getch, system(&quot;pause&quot;) or input loop */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//首先构建一个结构体 客户 包括序号 持续时间 以及希望延迟时间  实际开始时间</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">client</span>&#123;</span><br><span class="line">	<span class="type">int</span> order;</span><br><span class="line">	<span class="type">int</span> t;</span><br><span class="line">	<span class="type">int</span> d;</span><br><span class="line">	<span class="type">int</span> begin;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(client a,client b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a.d&lt;b.d)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	client a[n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i].order = i+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;a[i].t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;a[i].d;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//按照希望到达时间进行排序</span></span><br><span class="line">	<span class="built_in">sort</span>(a,a+n,cmp); </span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;a[i].order&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;endl;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//然后开始按照排好的顺序，开始计算开始时间 以及延迟时间，</span></span><br><span class="line">	<span class="type">int</span> Delaymax=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">0</span>].begin = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> Delay;</span><br><span class="line">		Delay=a[i].begin+a[i].t-a[i].d;</span><br><span class="line">		<span class="keyword">if</span>(Delay&gt;Delaymax)</span><br><span class="line">		&#123;</span><br><span class="line">			Delaymax = Delay;<span class="comment">//实时更新最大延迟时间</span></span><br><span class="line">		&#125;</span><br><span class="line">		a[i+<span class="number">1</span>].begin=a[i].begin+a[i].t;</span><br><span class="line">	 &#125; </span><br><span class="line">	cout&lt;&lt;Delaymax;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
+<h1 id="序列对比"><a href="#序列对比" class="headerlink" title="序列对比"></a>序列对比</h1><p>【问题描述】</p>
+<p>设S1[1..n]和S2[1..m]是两个序列, 把它们并排放到一起进行比较,在比较时可以在某个序列的字符之间插入空格, 插入空格的目的是使它们局部的相同区域能够对应.<br>(1)如果两个对应字符相等,那么赋权值 2;<br>(2)如果对应字符不等,赋权值-2;<br>(3)如果一个是字符,一个是空格,赋权值-1.<br>  求权值最大的对准方式。</p>
+<p> 求权值最大的对准方式。</p>
+<p>【输入形式】输入两个序列</p>
+<p>【输出形式】最大权值</p>
+<p>【样例输入】</p>
+<p>axabcdes</p>
+<p>axbacfes</p>
+<p>【样例输出】</p>
+<p>8</p>
+<p>动态规划算法，C[i,j]表示最大权值，S1[i]和S2[j]表示序列1，和序列2，采用自底向上。</p>
+<h1 id="求解“找零钱问题”"><a href="#求解“找零钱问题”" class="headerlink" title="求解“找零钱问题”"></a>求解“找零钱问题”</h1><p>【问题描述】设有 n 种零钱，价值分别为v1&#x3D;1, v2, … , vn, v1&lt;v2&lt;…&lt;vn. 需要付的总钱数是Y. 问：如何付钱使所付零钱数最少?<br>【输入形式】输入零钱个数n，总钱数，各零钱价值<br>【输出形式】贪心算法及动态规划算法的零钱方案<br>【样例输入】<br>4 28<br>1 5 14 18<br>【样例输出】<br>28&#x3D;18+5+5<br>28&#x3D;14+14</p>
+<p>因为每个零钱的重量是一样的，所以币值大的单位价值大，所花的重量少。将每种零钱的重量设为1，那么所付零钱数最少就变为零钱重量最小的问题</p>
+<p>贪心法：从最大的开始取，取到不能再取，就用取模的数字继续往下取，直至取完。</p>
+<p>动态规划算法：假设价值为1，方案就是选1，价值为2，方案就是选2或者1+1，看哪个重量最小选哪个，</p>
+<p>动态规划算法可以用递归来实现，但是此时重复的子问题会被多次计算，所以一般采用迭代实现，以空间换时间，将每次计算出来的值保存起来，这样下一次用的时候直接拿即可</p>
+<h1 id="矩阵连乘问题"><a href="#矩阵连乘问题" class="headerlink" title="矩阵连乘问题"></a>矩阵连乘问题</h1><p>【问题描述】给定n个矩阵：A1,A2,…,An，其中Ai与Ai+1是可乘的，i&#x3D;1，2…，n-1。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。<br>【输入形式】输入数据为矩阵个数和每个矩阵规模(以向量表示）<br>【输出形式】输出结果为计算矩阵连乘积的最少数乘次数和计算次序。<br>【样例输入】<br>5<br>30 35 15 5 10 20<br>【样例输出】<br>11875<br>(A1(A2A3))(A4A5)</p>
+<h1 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h1><p>汉诺塔问题 递推方程：T(n)&#x3D;2*T(n-1)+1  初值：T(1) &#x3D; 1 可以求出 T(n) &#x3D; 2^n-1</p>
+<p>插入排序算法 递推方程：W(n)&#x3D;W(n-1)+n-1 初值：W(1)&#x3D;0 可以求出 W(n) &#x3D; n(n-1)&#x2F;2</p>
+<p>不好迭代就换元迭代：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/../imgs/image-20230523202531818.png"
+                      alt="image-20230523202531818"
+                ></p>
+<h1 id="动态规划中心思想："><a href="#动态规划中心思想：" class="headerlink" title="动态规划中心思想："></a>动态规划中心思想：</h1><p>划分子问题，用参数表示子问题的边界，将问题求解转变为多步判断的过程</p>
+<p>确定优化函数，以函数的极大（极小）作为判断的依据，确定是否满足优化函数</p>
+<p>列出优化函数的递推方程（或不等式）和边界条件</p>
+<p>考虑是否需要设立标记函数，以记录划分位置</p>
+<p>自底向上计算，以备忘录方法（表格）存储中间结果</p>
+<p>根据备忘录（和标记函数）通过追溯给出最优解</p>
+<h1 id="截止日期"><a href="#截止日期" class="headerlink" title="截止日期"></a>截止日期</h1><p>【问题描述】</p>
+<p>某学科老师布置了n个题目，每个题目都有相应的分数及截止日期。各个题目的分数及截止日期可能并不相同。对某题目而言，如果在该题目的截止日期前完成则可获得对应的分数，否则无法得分。假设每个题目均需要花费一天的时间来完成，这期间无法完成其他题目。请你设计算法指定题目的完成计划，从而使总的得分最大。</p>
+<p>下面给出一个包含了7个题目及相应的分数、截止日期的实例：</p>
+<table>
+<thead>
+<tr>
+<th>题目</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>截止日期（天）</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>分数</td>
+<td>6</td>
+<td>7</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>对该实例而言，得分最大的作业完成方案为花费4天时间依次完成题目2,6,3,7。得分为15。</p>
+<p>【输入形式】 </p>
+<p>输入数据第一行为一个整数n (0 &lt;&#x3D; n &lt;&#x3D; 10000), 表示题目数目<br>之后n行各有两个整数, 第i行为 pi, di (1 &lt;&#x3D; pi, di &lt;&#x3D; 10000)，分别表示第i个题目的分数和截止时间</p>
+<p>【输出形式】</p>
+<p>一个整数, 为当前条件下的最大得分</p>
+<p>【样例输入】</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 </span><br><span class="line">50 2 </span><br><span class="line">10 1 </span><br><span class="line">20 2 </span><br><span class="line">30 1</span><br></pre></td></tr></table></figure></div>
+
+<p>【样例输出】</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">80</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">timu</span>&#123;</span><br><span class="line">	<span class="type">int</span> v;<span class="comment">//分值 </span></span><br><span class="line">	<span class="type">int</span> x;<span class="comment">//题号 </span></span><br><span class="line">	<span class="type">int</span> day;<span class="comment">//截止日期 </span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(timu a,timu b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//按照降序排列 </span></span><br><span class="line">    <span class="keyword">if</span>(a.v&gt;b.v)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">judge</span><span class="params">(timu a[],<span class="type">int</span> enddata[],<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> flag = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=a[x].day;i&gt;<span class="number">0</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(enddata[i]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			enddata[i] = <span class="number">1</span>;</span><br><span class="line">			flag = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	timu a[n+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i].x = i;</span><br><span class="line">		cin&gt;&gt;a[i].v;</span><br><span class="line">		cin&gt;&gt;a[i].day;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//先将题目的分值按照降序排列</span></span><br><span class="line">	<span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>,cmp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;a[i].v&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;a[i].day&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//得到截止日期最大的日期</span></span><br><span class="line">	<span class="type">int</span> daymax = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i].day&gt;daymax)</span><br><span class="line">		&#123;</span><br><span class="line">			daymax = a[i].day;</span><br><span class="line">		&#125;</span><br><span class="line">	 &#125; </span><br><span class="line">	 cout&lt;&lt;daymax&lt;&lt;endl;</span><br><span class="line">	<span class="comment">//只能在截止日期内做作业 每次选择分值最大的去做 遍历所有题目 先得到截止日期 如果能够在日期内做完就加上分值 不行的话就不加继续往后遍历 </span></span><br><span class="line">	<span class="comment">//初始化 </span></span><br><span class="line">	<span class="type">int</span> enddata[daymax+<span class="number">1</span>];<span class="comment">//从开始写作业到结束的那一天 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		enddata[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> sum=<span class="number">0</span>;<span class="comment">//总的分数 </span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//当明显感觉一个循环不够用时 这个时候写函数调用 会好很多</span></span><br><span class="line">		<span class="comment">//需要从每个题目的截止日期开始从后往前遍历 如果还有日期没有被占用 则分数相加 </span></span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">judge</span>(a,enddata,i))</span><br><span class="line">		&#123;</span><br><span class="line">			sum = sum+a[i].v;</span><br><span class="line">			daymax--;</span><br><span class="line">			<span class="keyword">if</span>(daymax&lt;=<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h1 id="一些细小知识点"><a href="#一些细小知识点" class="headerlink" title="一些细小知识点"></a>一些细小知识点</h1><p>1.0假1真</p>
 
             </div>
 
@@ -427,7 +514,7 @@
         <li><strong>创建于:</strong> 2023-05-12 10:21:40</li>
         
             <li>
-                <strong>更新于:</strong> 2023-05-12 10:46:33
+                <strong>更新于:</strong> 2023-05-27 09:47:47
             </li>
         
         <li>
@@ -456,6 +543,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/05/13/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">刷题记录</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
@@ -530,7 +632,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">算法设计与分析的实验总结</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-text">最小延迟调度问题</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="nav-text">最小延迟调度问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%AF%B9%E6%AF%94"><span class="nav-text">序列对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E2%80%9C%E6%89%BE%E9%9B%B6%E9%92%B1%E9%97%AE%E9%A2%98%E2%80%9D"><span class="nav-text">求解“找零钱问题”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E8%BF%9E%E4%B9%98%E9%97%AE%E9%A2%98"><span class="nav-text">矩阵连乘问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="nav-text">迭代法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%AD%E5%BF%83%E6%80%9D%E6%83%B3%EF%BC%9A"><span class="nav-text">动态规划中心思想：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%AA%E6%AD%A2%E6%97%A5%E6%9C%9F"><span class="nav-text">截止日期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%86%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-text">一些细小知识点</span></a></li></ol>
 
     </div>
 </div>
